@@ -512,12 +512,12 @@
       .scroll-hint { display: flex; bottom: 24px; }
 
       /* SECTIONS */
-      section { padding: 60px 20px; }
+      section { padding: 40px 20px; }
       .section-title { font-size: 1.3rem; }
 
       /* ABOUT */
       .about-inner { flex-direction: column; align-items: flex-start; gap: 24px; }
-      .about-avatar { width: 100%; height: 280px; border-radius: 12px; }
+      .about-avatar { width: 100%; height: 380px; border-radius: 12px; }
       .about-avatar img { object-position: center center; }
       .about-text { font-size: 0.92rem; }
 
@@ -571,14 +571,15 @@
     <p class="hero-tag">Hip Hop Instructor &nbsp;·&nbsp; Singapore</p>
     <div style="display:flex; align-items:flex-end; justify-content:space-between;">
       <h1 class="hero-name">YANNI<br><span>TAN</span></h1>
-      <div class="scroll-hint">Scroll</div>
     </div>
     <p class="hero-contact">
       <a href="mailto:yanting.tan.11@gmail.com">yanting.tan.11@gmail.com</a>
       &nbsp;&nbsp;·&nbsp;&nbsp;
       <a href="tel:+6590119285">+65 9011 9285</a>
     </p>
-    <div class="scroll-hint">Scroll</div>
+    <div style="display:flex; justify-content:flex-end;">
+      <div class="scroll-hint">Scroll</div>
+    </div>
   </section>
 
   <!-- ABOUT -->
@@ -826,7 +827,9 @@
     // Theme toggle
     const toggle = document.getElementById('themeToggle');
     const saved = localStorage.getItem('theme');
-    if (saved === 'light') { document.body.classList.add('light'); toggle.textContent = 'Dark'; }
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const usLight = saved ? saved === 'light' : !prefersDark;
+    if (usLight) { document.body.classList.add('light'); toggle.textContent = 'Dark'; }
     toggle.addEventListener('click', () => {
       const isLight = document.body.classList.toggle('light');
       toggle.textContent = isLight ? 'Dark' : 'Light';
