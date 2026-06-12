@@ -525,8 +525,16 @@
         grid-template-columns: 60px 1fr;
         gap: 16px;
         padding: 16px 16px;
+        align-items: start;
       }
-      .label-tag, .result-tag { display: none; }
+      .label-tag, .result-tag {
+        white-space: normal;
+        text-align: left;
+        grid-column: 2;
+        justify-self: start;
+        margin-top: 6px;
+        font-size: 0.58rem;
+      }
 
       /* SECTION HEADER */
       .section-header { gap: 12px; margin-bottom: 28px; }
